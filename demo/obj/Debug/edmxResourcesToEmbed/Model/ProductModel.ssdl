@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="patel_motorsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin_login">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="pass" Type="varchar" MaxLength="50" />
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company_brand" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="brand" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_name" Type="varchar" MaxLength="50" />
+    <Property Name="purchase_price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sell_price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="product_quantity" Type="float" />
+    <Property Name="product_category" Type="varchar" MaxLength="50" />
+    <Property Name="product_img" Type="image" />
+    <Property Name="brand" Type="varchar" MaxLength="50" />
+    <Property Name="MRP" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="invoice" Type="varchar" MaxLength="50" />
+    <Property Name="Gst" Type="float" />
+    <Property Name="base_price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Quantity_type" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Purchase_orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Invoice" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Purchse_OrderDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductBrand" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Qty_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Purchase_Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Gst" Type="float" />
+    <Property Name="discount" Type="float" />
+    <Property Name="BasePrice" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Quantity_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quantity_type" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Selling_OrderDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductBrand" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Qty_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Purchase_Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Gst" Type="float" />
+    <Property Name="discount" Type="float" />
+    <Property Name="BasePrice" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Selling_orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Invoice" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="selling_product_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_name" Type="varchar" MaxLength="50" />
+    <Property Name="purchase_price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sell_price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="product_quantity" Type="float" />
+    <Property Name="Party_name" Type="varchar" MaxLength="50" />
+    <Property Name="brand" Type="varchar" MaxLength="50" />
+    <Property Name="MRP" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="invoice" Type="varchar" MaxLength="50" />
+    <Property Name="Gst" Type="float" />
+    <Property Name="Quantity_type" Type="varchar" MaxLength="20" />
+    <Property Name="total" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="product_id" Type="int" />
+  </EntityType>
+  <EntityContainer Name="patel_motorsModelStoreContainer">
+    <EntitySet Name="admin_login" EntityType="Self.admin_login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="brand" EntityType="Self.brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purchase_orders" EntityType="Self.Purchase_orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purchse_OrderDetails" EntityType="Self.Purchse_OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quantity_Table" EntityType="Self.Quantity_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Selling_OrderDetails" EntityType="Self.Selling_OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Selling_orders" EntityType="Self.Selling_orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="selling_product_table" EntityType="Self.selling_product_table" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

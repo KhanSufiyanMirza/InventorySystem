@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="patel_motorsModelStoreContainer" CdmEntityContainer="Patel_motorsEntities">
+    <EntitySetMapping Name="admin_login">
+      <EntityTypeMapping TypeName="patel_motorsModel.admin_login">
+        <MappingFragment StoreEntitySet="admin_login">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="brands">
+      <EntityTypeMapping TypeName="patel_motorsModel.brand">
+        <MappingFragment StoreEntitySet="brand">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="company_brand" ColumnName="company_brand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="patel_motorsModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category1" ColumnName="category" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="patel_motorsModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="purchase_price" ColumnName="purchase_price" />
+          <ScalarProperty Name="sell_price" ColumnName="sell_price" />
+          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+          <ScalarProperty Name="product_category" ColumnName="product_category" />
+          <ScalarProperty Name="product_img" ColumnName="product_img" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="MRP" ColumnName="MRP" />
+          <ScalarProperty Name="invoice" ColumnName="invoice" />
+          <ScalarProperty Name="Gst" ColumnName="Gst" />
+          <ScalarProperty Name="base_price" ColumnName="base_price" />
+          <ScalarProperty Name="Quantity_type" ColumnName="Quantity_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quantity_Table">
+      <EntityTypeMapping TypeName="patel_motorsModel.Quantity_Table">
+        <MappingFragment StoreEntitySet="Quantity_Table">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Quantity_type" ColumnName="Quantity_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="selling_product_table">
+      <EntityTypeMapping TypeName="patel_motorsModel.selling_product_table">
+        <MappingFragment StoreEntitySet="selling_product_table">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="purchase_price" ColumnName="purchase_price" />
+          <ScalarProperty Name="sell_price" ColumnName="sell_price" />
+          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+          <ScalarProperty Name="Party_name" ColumnName="Party_name" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="MRP" ColumnName="MRP" />
+          <ScalarProperty Name="invoice" ColumnName="invoice" />
+          <ScalarProperty Name="Gst" ColumnName="Gst" />
+          <ScalarProperty Name="Quantity_type" ColumnName="Quantity_type" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchse_OrderDetails">
+      <EntityTypeMapping TypeName="patel_motorsModel.Purchse_OrderDetails">
+        <MappingFragment StoreEntitySet="Purchse_OrderDetails">
+          <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="Gst" ColumnName="Gst" />
+          <ScalarProperty Name="Purchase_Price" ColumnName="Purchase_Price" />
+          <ScalarProperty Name="Qty_type" ColumnName="Qty_type" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ProductBrand" ColumnName="ProductBrand" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Selling_OrderDetails">
+      <EntityTypeMapping TypeName="patel_motorsModel.Selling_OrderDetails">
+        <MappingFragment StoreEntitySet="Selling_OrderDetails">
+          <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="Gst" ColumnName="Gst" />
+          <ScalarProperty Name="Purchase_Price" ColumnName="Purchase_Price" />
+          <ScalarProperty Name="Qty_type" ColumnName="Qty_type" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ProductBrand" ColumnName="ProductBrand" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Selling_orders">
+      <EntityTypeMapping TypeName="patel_motorsModel.Selling_orders">
+        <MappingFragment StoreEntitySet="Selling_orders">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchase_orders">
+      <EntityTypeMapping TypeName="patel_motorsModel.Purchase_orders">
+        <MappingFragment StoreEntitySet="Purchase_orders">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

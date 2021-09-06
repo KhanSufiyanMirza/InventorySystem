@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="patel_motorsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin_login">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="purchase_price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sell_price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="product_quantity" Type="Double" />
+    <Property Name="product_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="product_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MRP" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gst" Type="Double" />
+    <Property Name="base_price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Quantity_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Quantity_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantity_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="selling_product_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="purchase_price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sell_price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="product_quantity" Type="Double" />
+    <Property Name="Party_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MRP" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gst" Type="Double" />
+    <Property Name="Quantity_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="product_id" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="Patel_motorsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admin_login" EntityType="Self.admin_login" />
+    <EntitySet Name="brands" EntityType="Self.brand" />
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="Quantity_Table" EntityType="Self.Quantity_Table" />
+    <EntitySet Name="selling_product_table" EntityType="Self.selling_product_table" />
+    <EntitySet Name="Purchse_OrderDetails" EntityType="patel_motorsModel.Purchse_OrderDetails" />
+    <EntitySet Name="Selling_OrderDetails" EntityType="patel_motorsModel.Selling_OrderDetails" />
+    <EntitySet Name="Selling_orders" EntityType="patel_motorsModel.Selling_orders" />
+    <EntitySet Name="Purchase_orders" EntityType="patel_motorsModel.Purchase_orders" />
+  </EntityContainer>
+  <EntityType Name="Purchse_OrderDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_id" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Qty_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Purchase_Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Gst" Type="Double" />
+    <Property Name="discount" Type="Double" />
+    <Property Name="BasePrice" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Selling_OrderDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_id" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Qty_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Purchase_Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Gst" Type="Double" />
+    <Property Name="discount" Type="Double" />
+    <Property Name="BasePrice" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Selling_orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Purchase_orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

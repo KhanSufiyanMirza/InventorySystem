@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+    </startup>
+<connectionStrings>
+    <add name="patel_motors" connectionString="Data Source=desktop-bbso535\sqlserver;Initial Catalog=patel_motors;Integrated Security=True"
+      providerName="System.Data.SqlClient" />
+  </connectionStrings>
+ 
+</configuration>

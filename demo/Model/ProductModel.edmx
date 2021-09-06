@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="patel_motorsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin_login">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="pass" Type="varchar" MaxLength="50" />
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="company_brand" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="brand" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="50" />
+          <Property Name="purchase_price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="sell_price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="product_quantity" Type="float" />
+          <Property Name="product_category" Type="varchar" MaxLength="50" />
+          <Property Name="product_img" Type="image" />
+          <Property Name="brand" Type="varchar" MaxLength="50" />
+          <Property Name="MRP" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="invoice" Type="varchar" MaxLength="50" />
+          <Property Name="Gst" Type="float" />
+          <Property Name="base_price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Quantity_type" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Purchase_orders">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Invoice" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Purchse_OrderDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductBrand" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Qty_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Purchase_Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Gst" Type="float" />
+          <Property Name="discount" Type="float" />
+          <Property Name="BasePrice" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Quantity_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quantity_type" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Selling_OrderDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductBrand" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Qty_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Purchase_Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Gst" Type="float" />
+          <Property Name="discount" Type="float" />
+          <Property Name="BasePrice" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Selling_orders">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Invoice" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="selling_product_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="50" />
+          <Property Name="purchase_price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="sell_price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="product_quantity" Type="float" />
+          <Property Name="Party_name" Type="varchar" MaxLength="50" />
+          <Property Name="brand" Type="varchar" MaxLength="50" />
+          <Property Name="MRP" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="invoice" Type="varchar" MaxLength="50" />
+          <Property Name="Gst" Type="float" />
+          <Property Name="Quantity_type" Type="varchar" MaxLength="20" />
+          <Property Name="total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="product_id" Type="int" />
+        </EntityType>
+        <EntityContainer Name="patel_motorsModelStoreContainer">
+          <EntitySet Name="admin_login" EntityType="Self.admin_login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="brand" EntityType="Self.brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase_orders" EntityType="Self.Purchase_orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchse_OrderDetails" EntityType="Self.Purchse_OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quantity_Table" EntityType="Self.Quantity_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Selling_OrderDetails" EntityType="Self.Selling_OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Selling_orders" EntityType="Self.Selling_orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="selling_product_table" EntityType="Self.selling_product_table" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="patel_motorsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin_login">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="company_brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="purchase_price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="sell_price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="product_quantity" Type="Double" />
+          <Property Name="product_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="product_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MRP" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gst" Type="Double" />
+          <Property Name="base_price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Quantity_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Quantity_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantity_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="selling_product_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="purchase_price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="sell_price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="product_quantity" Type="Double" />
+          <Property Name="Party_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MRP" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gst" Type="Double" />
+          <Property Name="Quantity_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="product_id" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="Patel_motorsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin_login" EntityType="Self.admin_login" />
+          <EntitySet Name="brands" EntityType="Self.brand" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="Quantity_Table" EntityType="Self.Quantity_Table" />
+          <EntitySet Name="selling_product_table" EntityType="Self.selling_product_table" />
+          <EntitySet Name="Purchse_OrderDetails" EntityType="patel_motorsModel.Purchse_OrderDetails" />
+          <EntitySet Name="Selling_OrderDetails" EntityType="patel_motorsModel.Selling_OrderDetails" />
+          <EntitySet Name="Selling_orders" EntityType="patel_motorsModel.Selling_orders" />
+          <EntitySet Name="Purchase_orders" EntityType="patel_motorsModel.Purchase_orders" />
+        </EntityContainer>
+        <EntityType Name="Purchse_OrderDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Qty_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Purchase_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Gst" Type="Double" />
+          <Property Name="discount" Type="Double" />
+          <Property Name="BasePrice" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Selling_OrderDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Qty_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Purchase_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Gst" Type="Double" />
+          <Property Name="discount" Type="Double" />
+          <Property Name="BasePrice" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Selling_orders">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Purchase_orders">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="patel_motorsModelStoreContainer" CdmEntityContainer="Patel_motorsEntities">
+          <EntitySetMapping Name="admin_login">
+            <EntityTypeMapping TypeName="patel_motorsModel.admin_login">
+              <MappingFragment StoreEntitySet="admin_login">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brands">
+            <EntityTypeMapping TypeName="patel_motorsModel.brand">
+              <MappingFragment StoreEntitySet="brand">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="company_brand" ColumnName="company_brand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="patel_motorsModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category1" ColumnName="category" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="patel_motorsModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="purchase_price" ColumnName="purchase_price" />
+                <ScalarProperty Name="sell_price" ColumnName="sell_price" />
+                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+                <ScalarProperty Name="product_category" ColumnName="product_category" />
+                <ScalarProperty Name="product_img" ColumnName="product_img" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="invoice" ColumnName="invoice" />
+                <ScalarProperty Name="Gst" ColumnName="Gst" />
+                <ScalarProperty Name="base_price" ColumnName="base_price" />
+                <ScalarProperty Name="Quantity_type" ColumnName="Quantity_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quantity_Table">
+            <EntityTypeMapping TypeName="patel_motorsModel.Quantity_Table">
+              <MappingFragment StoreEntitySet="Quantity_Table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Quantity_type" ColumnName="Quantity_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="selling_product_table">
+            <EntityTypeMapping TypeName="patel_motorsModel.selling_product_table">
+              <MappingFragment StoreEntitySet="selling_product_table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="purchase_price" ColumnName="purchase_price" />
+                <ScalarProperty Name="sell_price" ColumnName="sell_price" />
+                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+                <ScalarProperty Name="Party_name" ColumnName="Party_name" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="invoice" ColumnName="invoice" />
+                <ScalarProperty Name="Gst" ColumnName="Gst" />
+                <ScalarProperty Name="Quantity_type" ColumnName="Quantity_type" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchse_OrderDetails">
+            <EntityTypeMapping TypeName="patel_motorsModel.Purchse_OrderDetails">
+              <MappingFragment StoreEntitySet="Purchse_OrderDetails">
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="Gst" ColumnName="Gst" />
+                <ScalarProperty Name="Purchase_Price" ColumnName="Purchase_Price" />
+                <ScalarProperty Name="Qty_type" ColumnName="Qty_type" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ProductBrand" ColumnName="ProductBrand" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Selling_OrderDetails">
+            <EntityTypeMapping TypeName="patel_motorsModel.Selling_OrderDetails">
+              <MappingFragment StoreEntitySet="Selling_OrderDetails">
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="Gst" ColumnName="Gst" />
+                <ScalarProperty Name="Purchase_Price" ColumnName="Purchase_Price" />
+                <ScalarProperty Name="Qty_type" ColumnName="Qty_type" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ProductBrand" ColumnName="ProductBrand" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Selling_orders">
+            <EntityTypeMapping TypeName="patel_motorsModel.Selling_orders">
+              <MappingFragment StoreEntitySet="Selling_orders">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+                <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchase_orders">
+            <EntityTypeMapping TypeName="patel_motorsModel.Purchase_orders">
+              <MappingFragment StoreEntitySet="Purchase_orders">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+                <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
